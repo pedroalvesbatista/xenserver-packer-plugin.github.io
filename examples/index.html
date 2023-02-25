@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Examples - Packer - Plugin Xen Server</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Examples";
+        var mkdocs_page_input_path = "examples.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Packer - Plugin Xen Server
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting_started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../config_ref/">Configuration Reference</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#debian-ubuntu">Debian / Ubuntu</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rocky-linux-centos-rhel">Rocky Linux / CentOS / RHEL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#freebsd-openbsd-netbsd">FreeBSD / OpenBSD / NetBSD</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Packer - Plugin Xen Server</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Examples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="examples">Examples</h1>
+<p>Examples
+In order for new users to get up and running with the packer builder, a few examples of building a machine image with popular distros have been created.</p>
+<p>In order to see an exhaustive list of configuration options for the packer builder please see the following documentation. This doc will focus on the details relevant to the particular distro.</p>
+<p>Running the examples
+In order to run the examples you will need to perform the following steps:</p>
+<pre><code>Export those vars:
+PKR_VAR_remote_host
+PKR_VAR_remote_password
+PKR_VAR_remote_username
+PKR_VAR_sr_name
+PKR_VAR_sr_iso_name
+PKR_VAR_remote_host must be the resource pool primary, aka the master.
+</code></pre>
+<p>Run <code>packer init path/to/defenition.pkr.hcl</code> to download the xenserver plugin</p>
+<p>Run packer build  path/to/defenition.pkr.hcl</p>
+<p>So for example: packer build  examples/centos/centos8-netinstall.pkr.hcl</p>
+<h4 id="debian-ubuntu">Debian / Ubuntu</h4>
+<p>The Ubuntu example uses the autoinstall tool to configure the VM template. Please see the autoinstall docs for an exhaustive list of what is supported.</p>
+<p>Packer will create a http server to serve the files as specified from the http_directory specified in the builder configuration. This is where the user-data and meta-data for autoinstall must be present.</p>
+<h4 id="rocky-linux-centos-rhel">Rocky Linux / CentOS / RHEL</h4>
+<p>The Rocky Linux / CentOS / RHEL examples use <code>kickstart</code> files to configure the VM template. Please see the kickstart documentation for the options that are supported.</p>
+<p>Packer will create a http server to serve the files as specified from the http_directory specified in the builder configuration. This is where the kickstart config file must be present.</p>
+<h4 id="freebsd-openbsd-netbsd">FreeBSD / OpenBSD / NetBSD</h4>
+<ul>
+<li>Coming soon !</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../config_ref/" class="btn btn-neutral float-left" title="Configuration Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../config_ref/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
